@@ -1,0 +1,265 @@
+{{!< default}}
+
+<section id="intro" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-avatar" aria-hidden="true" 
+      {{#if @custom.hero_avatar_zh}}
+        style="background: url('{{@custom.hero_avatar_zh}}') center/cover no-repeat"
+      {{else if @custom.hero_avatar}}
+        style="background: url('{{@custom.hero_avatar}}') center/cover no-repeat"
+      {{/if}}></div>
+    <div>
+      <h1 class="title gradient-text">
+        {{#if @custom.hero_name_zh}}
+          {{@custom.hero_name_zh}}
+        {{else if @custom.hero_name}}
+          {{@custom.hero_name}}
+        {{else}}
+          Shuo Meng
+        {{/if}}
+      </h1>
+      <p class="subtitle">
+        {{#if @custom.hero_subtitle_zh}}
+          {{@custom.hero_subtitle_zh}}
+        {{else if @custom.hero_subtitle}}
+          {{@custom.hero_subtitle}}
+        {{else}}
+          大语言模型工程师 / 应用科学家
+        {{/if}}
+      </p>
+      <p class="location">
+        {{#if @custom.hero_location_zh}}
+          {{@custom.hero_location_zh}}
+        {{else if @custom.hero_location}}
+          {{@custom.hero_location}}
+        {{else}}
+          深圳 / 远程
+        {{/if}}
+      </p>
+      <p class="hero-tagline">
+        {{#if @custom.hero_tagline_zh}}
+          {{{@custom.hero_tagline_zh}}}
+        {{else if @custom.hero_tagline}}
+          {{{@custom.hero_tagline}}}
+        {{else}}
+          端到端 LLM 工程：数据 → 训练 → 对齐 → 评测 → 推理。欢迎全职机会。
+        {{/if}}
+      </p>
+      <p class="hero-tagline2">
+        {{#if @custom.hero_tagline2_zh}}
+          {{{@custom.hero_tagline2_zh}}}
+        {{else if @custom.hero_tagline2}}
+          {{{@custom.hero_tagline2}}}
+        {{else}}
+          正在寻找全职机会。
+        {{/if}}
+      </p>
+    </div>
+  </div>
+  <div class="hero-bg"></div>
+  <svg class="hero-mask" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C240,80 480,120 720,120 C960,120 1200,80 1440,0 L1440,100 L0,100 Z"/></svg>
+  </section>
+
+<section id="education" class="section container">
+  {{#get "pages" filter="slug:education-zh" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>教育经历</h2>
+      <ul class="timeline">
+        <li>
+          <div class="time">2021 – 至今</div>
+          <div class="content"><strong>香港城市大学</strong> · 计算机科学博士（方向：大语言模型）</div>
+        </li>
+        <li>
+          <div class="time">2018 – 2021</div>
+          <div class="content"><strong>某大学</strong> · 计算机科学硕士（NLP / 机器学习）</div>
+        </li>
+        <li>
+          <div class="time">2014 – 2018</div>
+          <div class="content"><strong>某大学</strong> · 软件工程学士</div>
+        </li>
+      </ul>
+    {{/if}}
+  {{/get}}
+</section>
+
+<section id="programming-skills" class="section container">
+  <div>
+    {{#get "pages" filter="slug:research-skills-zh" limit="1"}}
+      {{#if pages}}
+        {{#foreach pages}}
+          {{{content}}}
+        {{/foreach}}
+      {{else}}
+        <h2>核心技能</h2>
+        <h3>编程语言</h3>
+        <ul class="bullets">
+          <li>精通 Python 及面向对象编程</li>
+          <li>熟悉 C++，可进行性能优化开发</li>
+        </ul>
+        <h3>AI 与大模型</h3>
+        <ul class="bullets">
+          <li>熟练使用 PyTorch 进行模型开发，并使用 DDP 进行分布式训练</li>
+          <li>掌握 vLLM 等框架进行大模型的高效推理部署</li>
+          <li>具备 RAG 系统设计与开发经验</li>
+        </ul>
+      {{/if}}
+    {{/get}}
+  </div>
+</section>
+
+
+<section id="projects" class="section container">
+  {{#get "pages" filter="slug:projects-zh" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>项目</h2>
+      <div class="carousel" data-carousel="projects">
+        <button class="carousel-arrow prev" aria-label="上一项" data-target="projects">&#8249;<span class="sr-only">上一项</span></button>
+        <div class="carousel-track cards" id="carousel-projects">
+          <article class="card">
+            <h3>指令微调与对齐（7B）</h3>
+            <p>基于 LoRA/QLoRA 的 SFT + DPO；MT-Bench +3.1。包含训练/推理/评测脚本。</p>
+            <p><a class="btn small" href="#">GitHub</a> <a class="btn small" href="#">博客</a></p>
+          </article>
+          <article class="card">
+            <h3>企业级 RAG 模板</h3>
+            <p>端到端：解析 → 索引 → 检索 → 重写 → 重排序 → 生成 → 可观测。支持 AB 测试。</p>
+            <p><a class="btn small" href="#">演示</a> <a class="btn small" href="#">GitHub</a></p>
+          </article>
+          <article class="card">
+            <h3>高性能推理</h3>
+            <p>一键部署 vLLM/TGI，多模型路由；监控 QPS/延迟/成本。</p>
+            <p><a class="btn small" href="#">GitHub</a></p>
+          </article>
+          <article class="card">
+            <h3>长上下文与检索对齐</h3>
+            <p>长上下文训练与评测（needles/QA），结合 RAG 策略提升稳定性。</p>
+            <p><a class="btn small" href="#">博客</a></p>
+          </article>
+          <article class="card">
+            <h3>多模态问答微调</h3>
+            <p>在领域数据上微调 LLaVA 并部署 INT4；包含标注/清洗/评测流程。</p>
+            <p><a class="btn small" href="#">GitHub</a></p>
+          </article>
+        </div>
+        <button class="carousel-arrow next" aria-label="下一项" data-target="projects">&#8250;<span class="sr-only">下一项</span></button>
+      </div>
+    {{/if}}
+  {{/get}}
+</section>
+
+
+<section id="publications" class="section container">
+  {{#get "pages" filter="slug:publications-zh" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>论文/会议</h2>
+      <ol class="pubs">
+        <li>面向企业 LLM 的领域化指令跟随 — arXiv 2024，<a href="#">arXiv</a></li>
+        <li>结构化检索与重排序的高效 RAG — 技术报告 2023，<a href="#">PDF</a></li>
+        <li>开源：LLM 推理最佳实践（vLLM/TGI/SGLang），<a href="#">GitHub</a></li>
+      </ol>
+    {{/if}}
+  {{/get}}
+</section>
+
+
+<section id="experience" class="section container">
+  {{#get "pages" filter="slug:experience-zh" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>工作经历</h2>
+      <div class="carousel" data-carousel="exp">
+        <button class="carousel-arrow prev" aria-label="上一项" data-target="exp">&#8249;<span class="sr-only">上一项</span></button>
+        <div class="carousel-track cards" id="carousel-exp">
+          <article class="card">
+            <h3>科技公司 — LLM 工程师</h3>
+            <p>负责 7B/13B 指令微调与对齐。构建数据清洗、合成和去重流水线（3B+ tokens）。部署 vLLM，单 Pod 180+ QPS，P95 延迟 -35%，成本 -28%。</p>
+            <p class="time">2024.03 – 至今 · 技术栈：PyTorch, DeepSpeed, LoRA/QLoRA, vLLM, Ray, K8s</p>
+          </article>
+          <article class="card">
+            <h3>企业 — RAG 平台工程师</h3>
+            <p>设计企业级 RAG（查询重写与重排序），答案命中率 +22%，幻觉 -40%。补充检索/生成全链路可观测。</p>
+            <p class="time">2023.08 – 2024.02 · 技术栈：Faiss/pgvector, LangChain/LangGraph, OpenSearch, FastAPI</p>
+          </article>
+          <article class="card">
+            <h3>科研助理 — 多模态 LLM</h3>
+            <p>在领域数据上微调 LLaVA，改进指令模板与对话格式；内部 VQA 集合 +8.6%。部署 INT4。</p>
+            <p class="time">2022.06 – 2023.06 · 技术栈：LLaVA, PEFT, Flash-Attn, Triton</p>
+          </article>
+        </div>
+        <button class="carousel-arrow next" aria-label="下一项" data-target="exp">&#8250;<span class="sr-only">下一项</span></button>
+      </div>
+    {{/if}}
+  {{/get}}
+</section>
+
+{{! 精选文章（中文） }}
+{{#get "posts" filter="featured:true+tag:hash-lang-zh" limit="3" include="authors,tags"}}
+  {{#if posts}}
+    <section id="featured-posts" class="section container">
+      <h2>文章</h2>
+      <div class="cards">
+        {{#foreach posts}}
+          <article class="card">
+            <h3><a href="{{url absolute="true"}}">{{title}}</a></h3>
+            <p class="time">{{date published_at format="YYYY-MM-DD"}} · {{reading_time minute="1分钟阅读" minutes="%分钟阅读"}}</p>
+            {{#if excerpt}}
+              <p>{{excerpt}}</p>
+            {{/if}}
+            <p><a class="btn small" href="{{url absolute="true"}}">阅读全文</a></p>
+          </article>
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+{{! 最新文章（中文） }}
+{{#get "posts" filter="tag:hash-lang-zh" limit="4" include="authors,tags" order="published_at desc"}}
+  {{#if posts}}
+    <section id="latest-posts" class="section container">
+      <h2>文章</h2>
+      <div class="cards">
+        {{#foreach posts}}
+          <article class="card">
+            <h3><a href="{{url absolute="true"}}">{{title}}</a></h3>
+            <p class="time">{{date published_at format="YYYY-MM-DD"}} · {{reading_time minute="1分钟阅读" minutes="%分钟阅读"}}</p>
+            {{#if excerpt}}
+              <p>{{excerpt}}</p>
+            {{/if}}
+            <p><a class="btn small" href="{{url absolute="true"}}">阅读全文</a></p>
+          </article>
+        {{/foreach}}
+      </div>
+      <p style="margin-top:12px"><a class="btn" href="/zh/blog/">查看全部文章</a></p>
+    </section>
+  {{/if}}
+{{/get}}
+
+<section id="contact" class="section container">
+  <h2>联系</h2>
+  <ul class="contact">
+    <li>邮箱：<a href="mailto:{{#if @custom.contact_email}}{{@custom.contact_email}}{{else}}you@example.com{{/if}}">{{#if @custom.contact_email}}{{@custom.contact_email}}{{else}}you@example.com{{/if}}</a></li>
+    <li>微信：{{#if @custom.contact_wechat}}{{@custom.contact_wechat}}{{else}}+86 13100000000{{/if}}</li>
+    <li>WhatsApp：{{#if @custom.contact_whatsapp}}{{@custom.contact_whatsapp}}{{else}}+852 50000000{{/if}}</li>
+    <li>地址：{{#if @custom.contact_address}}{{@custom.contact_address}}{{else}}你的实验室地址{{/if}}</li>
+    <li>GitHub：<a href="{{#if @custom.contact_github}}{{@custom.contact_github}}{{else}}https://github.com/yourname{{/if}}" target="_blank" rel="noopener">GitHub</a></li>
+    <li>Google Scholar：<a href="{{#if @custom.contact_scholar}}{{@custom.contact_scholar}}{{else}}https://scholar.google.com/citations?user=XXXX{{/if}}" target="_blank" rel="noopener">Google Scholar</a></li>
+  </ul>
+</section>
+
+

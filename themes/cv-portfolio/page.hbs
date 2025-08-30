@@ -1,0 +1,23 @@
+{{!< default}}
+
+{{#page}}
+<article class="section container">
+  <header>
+    {{#if @page.show_title_and_feature_image}}
+      <h1>{{title}}</h1>
+      {{#if feature_image}}
+        <figure class="kg-card kg-image-card kg-width-wide">
+          <img src="{{feature_image}}" alt="{{title}}" loading="lazy" />
+        </figure>
+      {{/if}}
+    {{else}}
+      <h1 class="sr-only">{{title}}</h1>
+    {{/if}}
+  </header>
+  <section class="content">
+    {{content}}
+  </section>
+</article>
+{{/page}}
+
+

@@ -1,0 +1,226 @@
+{{!< default}}
+
+<section id="intro" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-avatar" aria-hidden="true" {{#if @custom.hero_avatar}}style="background: url('{{@custom.hero_avatar}}') center/cover no-repeat"{{/if}}></div>
+    <div>
+      <h1 class="title gradient-text">{{#if @custom.hero_name}}{{@custom.hero_name}}{{else}}Shuo Meng{{/if}}</h1>
+      <p class="subtitle">{{#if @custom.hero_subtitle}}{{@custom.hero_subtitle}}{{else}}LLM Engineer / Applied Scientist{{/if}}</p>
+      <p class="location">{{#if @custom.hero_location}}{{@custom.hero_location}}{{else}}Shenzhen / Remote{{/if}}</p>
+      <p class="hero-tagline">{{#if @custom.hero_tagline}}{{{@custom.hero_tagline}}}{{else}}End-to-end LLM engineering: data → training → alignment → eval → inference.{{/if}}</p>
+      <p class="hero-tagline">{{#if @custom.hero_tagline2}}{{{@custom.hero_tagline2}}}{{else}}Open to full-time roles.{{/if}}</p>
+    </div>
+  </div>
+  <div class="hero-bg"></div> 
+  <svg class="hero-mask" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C240,80 480,120 720,120 C960,120 1200,80 1440,0 L1440,100 L0,100 Z"/></svg>
+</section>
+
+<section id="education" class="section container">
+  {{#get "pages" filter="slug:education" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>Education</h2>
+      <ul class="timeline">
+        <li>
+          <div class="time">2021 – Present</div>
+          <div class="content"><strong>City University of Hong Kong</strong> · Ph.D. in Computer Science (Focus: Large Language Models)</div>
+        </li>
+        <li>
+          <div class="time">2018 – 2021</div>
+          <div class="content"><strong>University Name</strong> · M.S. in Computer Science (NLP / ML)</div>
+        </li>
+        <li>
+          <div class="time">2014 – 2018</div>
+          <div class="content"><strong>University Name</strong> · B.Eng. in Software Engineering</div>
+        </li>
+      </ul>
+    {{/if}}
+  {{/get}}
+</section>
+
+<section id="programming-skills" class="section container">
+  <div>
+    {{#get "pages" filter="slug:research-skills" limit="1"}}
+      {{#if pages}}
+        {{#foreach pages}}
+          {{{content}}}
+        {{/foreach}}
+      {{else}}
+        <h2>Core Skills</h2>
+        <h4>Programming Skills</h4>
+        <ul class="bullets">
+          <li>Skilled in model development with PyTorch; distributed training with DDP</li>
+          <li>Efficient LLM inference deployment using frameworks such as vLLM</li>
+          <li>Experienced in designing and building RAG systems</li>
+        </ul>
+        <h4>AI & Large Language Models</h4>
+        <ul class="bullets">
+          <li>Skilled in model development with PyTorch; distributed training with DDP</li>
+          <li>Efficient LLM inference deployment using frameworks such as vLLM</li>
+          <li>Experienced in designing and building RAG systems</li>
+        </ul>
+      {{/if}}
+    {{/get}}
+  </div>
+</section>
+
+<section id="projects" class="section container">
+  {{#get "pages" filter="slug:projects" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>Projects</h2>
+      <div class="carousel" data-carousel="projects">
+        <button class="carousel-arrow prev" aria-label="Previous" data-target="projects">&#8249;<span class="sr-only">Previous</span></button>
+        <div class="carousel-track cards" id="carousel-projects">
+          <article class="card">
+            <h3>Instruction Tuning & Alignment (7B)</h3>
+            <p>LoRA/QLoRA-based SFT + DPO; +3.1 on MT-Bench. Training/inference/eval scripts included.</p>
+            <p><a class="btn small" href="#">GitHub</a> <a class="btn small" href="#">Blog</a></p>
+          </article>
+          <article class="card">
+            <h3>Enterprise RAG Template</h3>
+            <p>End-to-end pipeline: parsing → indexing → retrieval → rewriting → re-ranking → generation → observability. AB testing ready.</p>
+            <p><a class="btn small" href="#">Demo</a> <a class="btn small" href="#">GitHub</a></p>
+          </article>
+          <article class="card">
+            <h3>High-performance Inference</h3>
+            <p>One-click vLLM/TGI deployment with routing and multi-model serving; monitored QPS/latency/cost.</p>
+            <p><a class="btn small" href="#">GitHub</a></p>
+          </article>
+          <article class="card">
+            <h3>Long Context & Retrieval Alignment</h3>
+            <p>Long-context training & eval (needle/QA), with RAG strategies to improve stability.</p>
+            <p><a class="btn small" href="#">Blog</a></p>
+          </article>
+          <article class="card">
+            <h3>Multimodal QA Fine-tuning</h3>
+            <p>LLaVA fine-tuning on domain data and INT4 deployment; includes labeling/cleaning/evaluation pipeline.</p>
+            <p><a class="btn small" href="#">GitHub</a></p>
+          </article>
+        </div>
+        <button class="carousel-arrow next" aria-label="Next" data-target="projects">&#8250;<span class="sr-only">Next</span></button>
+      </div>
+    {{/if}}
+  {{/get}}
+</section>
+
+
+<section id="publications" class="section container">
+  {{#get "pages" filter="slug:publications" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>Publications</h2>
+      <ol class="pubs">
+        <li>Domain-Tuned Instruction Following for Enterprise LLM — arXiv 2024, <a href="#">arXiv</a></li>
+        <li>Efficient RAG with Structured Retrieval and Re-ranking — Tech Report 2023, <a href="#">PDF</a></li>
+        <li>Open-source: Best Practices for LLM Inference (vLLM/TGI/SGLang), <a href="#">GitHub</a></li>
+      </ol>
+    {{/if}}
+  {{/get}}
+</section>
+
+
+<section id="experience" class="section container">
+  {{#get "pages" filter="slug:experience" limit="1"}}
+    {{#if pages}}
+      {{#foreach pages}}
+        {{{content}}}
+      {{/foreach}}
+    {{else}}
+      <h2>Experience</h2>
+      <div class="carousel" data-carousel="exp">
+        <button class="carousel-arrow prev" aria-label="Previous" data-target="exp">&#8249;<span class="sr-only">Previous</span></button>
+        <div class="carousel-track cards" id="carousel-exp">
+          <article class="card">
+            <h3>Tech Company — LLM Engineer</h3>
+            <p>Led 7B/13B instruction tuning & alignment. Built data pipeline for cleaning, synthesis, and dedup (3B+ tokens). Deployed vLLM with 180+ QPS per pod, P95 latency −35%, cost −28%.</p>
+            <p class="time">2024.03 – Present · Stack: PyTorch, DeepSpeed, LoRA/QLoRA, vLLM, Ray, K8s</p>
+          </article>
+          <article class="card">
+            <h3>Enterprise — RAG Platform Engineer</h3>
+            <p>Designed enterprise RAG with query rewriting and re-ranking. Answer hit rate +22%, hallucination −40%. Added observability across retrieval/generation.</p>
+            <p class="time">2023.08 – 2024.02 · Stack: Faiss/pgvector, LangChain/LangGraph, OpenSearch, FastAPI</p>
+          </article>
+          <article class="card">
+            <h3>Research Assistant — Multimodal LLM</h3>
+            <p>Fine-tuned LLaVA on domain data with improved instruction templates and dialogue format; +8.6% on internal VQA set. INT4 deployment on GPUs.</p>
+            <p class="time">2022.06 – 2023.06 · Stack: LLaVA, PEFT, Flash-Attn, Triton</p>
+          </article>
+        </div>
+        <button class="carousel-arrow next" aria-label="Next" data-target="exp">&#8250;<span class="sr-only">Next</span></button>
+      </div>
+    {{/if}}
+  {{/get}}
+</section>
+
+{{! Featured posts (if any) }}
+{{#get "posts" filter="featured:true+tag:-hash-lang-zh" limit="3" include="authors,tags"}}
+  {{#if posts}}
+    <section id="featured-posts" class="section container">
+      <h2>Posts</h2>
+      <div class="cards">
+        {{#foreach posts}}
+          <article class="card">
+            {{#if feature_image}}
+              <a href="{{url absolute="true"}}"><img class="card-cover" src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy" /></a>
+            {{/if}}
+            <h3><a href="{{url absolute="true"}}">{{title}}</a></h3>
+            <p class="time">{{date published_at format="YYYY-MM-DD"}} · {{reading_time minute="1 min read" minutes="% min read"}}</p>
+            {{#if excerpt}}
+              <p>{{excerpt}}</p>
+            {{/if}}
+            <p><a class="btn small" href="{{url absolute="true"}}">Read more</a></p>
+          </article>
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+{{! Latest posts }}
+{{#get "posts" filter="tag:-hash-lang-zh" limit="4" include="authors,tags" order="published_at desc"}}
+  {{#if posts}}
+    <section id="latest-posts" class="section container">
+      <h2>Posts</h2>
+      <div class="cards">
+        {{#foreach posts}}
+          <article class="card">
+            {{#if feature_image}}
+              <a href="{{url absolute="true"}}"><img class="card-cover" src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy" /></a>
+            {{/if}}
+            <h3><a href="{{url absolute="true"}}">{{title}}</a></h3>
+            <p class="time">{{date published_at format="YYYY-MM-DD"}} · {{reading_time minute="1 min read" minutes="% min read"}}</p>
+            {{#if excerpt}}
+              <p>{{excerpt}}</p>
+            {{/if}}
+            <p><a class="btn small" href="{{url absolute="true"}}">Read more</a></p>
+          </article>
+        {{/foreach}}
+      </div>
+      <p style="margin-top:12px"><a class="btn" href="/blog/">View all posts</a></p>
+    </section>
+  {{/if}}
+{{/get}}
+
+<section id="contact" class="section container">
+  <h2>Contact</h2>
+  <ul class="contact">
+    <li>Email: <a href="mailto:{{#if @custom.contact_email}}{{@custom.contact_email}}{{else}}you@example.com{{/if}}">{{#if @custom.contact_email}}{{@custom.contact_email}}{{else}}you@example.com{{/if}}</a></li>
+    <li>WeChat: {{#if @custom.contact_wechat}}{{@custom.contact_wechat}}{{else}}+86 13100000000{{/if}}</li>
+    <li>WhatsApp: {{#if @custom.contact_whatsapp}}{{@custom.contact_whatsapp}}{{else}}+852 50000000{{/if}}</li>
+    <li>Address: {{#if @custom.contact_address}}{{@custom.contact_address}}{{else}}Your lab address{{/if}}</li>
+    <li>GitHub: <a href="{{#if @custom.contact_github}}{{@custom.contact_github}}{{else}}https://github.com/yourname{{/if}}" target="_blank" rel="noopener">GitHub</a></li>
+    <li>Google Scholar: <a href="{{#if @custom.contact_scholar}}{{@custom.contact_scholar}}{{else}}https://scholar.google.com/citations?user=XXXX{{/if}}" target="_blank" rel="noopener">Google Scholar</a></li>
+  </ul>
+</section>
+
+

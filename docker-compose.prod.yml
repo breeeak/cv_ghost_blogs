@@ -1,0 +1,18 @@
+services:
+  ghost:
+    # 生产环境覆盖：使用外部 URL 和真实 SMTP；通过反向代理提供 80/443，不直接暴露 2368
+    environment:
+      url: ${GHOST_URL}
+      mail__transport: SMTP
+      mail__from: "Ghost <no-reply@your-domain.com>"
+      mail__options__host: ${SMTP_HOST}
+      mail__options__port: ${SMTP_PORT}
+      mail__options__secure: ${SMTP_SECURE:-"false"}
+      mail__options__auth__user: ${SMTP_USER}
+      mail__options__auth__pass: ${SMTP_PASS}
+    # 生产建议由 Nginx 等反代接入，不暴露容器端口
+    ports: []
+
+  mailpit:
+    profiles: ["dev"]
+    ports: []

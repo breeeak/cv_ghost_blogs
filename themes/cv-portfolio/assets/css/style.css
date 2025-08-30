@@ -1,0 +1,128 @@
+:root{--bg:#ffffff;--bg-soft:#f8fafc;--fg:#0f172a;--muted:#475569;--accent:#bf165e;--card:#ffffff;--border:#e5e7eb}
+@media (prefers-color-scheme: dark){:root{--bg:#0f172a;--bg-soft:#111827;--fg:#e5e7eb;--muted:#9ca3af;--accent:#bf165e;--card:#0b1022;--border:#1f2937}}
+html{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);line-height:1.75}
+.content a, .kg-card a, article a, a{color:var(--accent)}
+.content a:hover, .kg-card a:hover, article a:hover, a:hover{text-decoration:underline}
+.container{max-width:1000px;margin:0 auto;padding:0 20px}
+.site-header{position:sticky;top:0;z-index:20;background:var(--card);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{color:var(--fg);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;height:56px}
+.site-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px}
+.site-nav li{margin:0}
+.site-nav a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;height:56px}
+.site-nav a:hover{color:var(--fg)}
+.site-nav .nav-current a{color:var(--fg);font-weight:600}
+.site-nav a:hover{color:var(--fg)}
+.site-right{display:flex;align-items:center;gap:12px}
+.header-actions{display:flex;align-items:center;gap:8px;margin-left:12px;height:56px}
+.icon-button{display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;background:transparent;color:var(--fg);cursor:pointer;line-height:0;font-size:1em;vertical-align:middle;height:56px}
+.icon-button:hover{box-shadow:none;transform:none}
+.theme-dropdown{position:relative}
+.lang-dropdown{position:relative}
+.dropdown{position:absolute;right:0;top:calc(100% + 6px);min-width:160px;border:1px solid var(--border);background:var(--card);border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.12);padding:6px}
+.menu-item{display:flex;gap:8px;align-items:center;width:100%;background:transparent;border:0;color:var(--fg);padding:8px 10px;border-radius:8px;text-align:left;cursor:pointer}
+.menu-item[aria-checked="true"],.menu-item:hover{background:var(--bg-soft)}
+.theme-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;text-align:center;line-height:1;vertical-align:middle}
+.lang-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;text-align:center;line-height:1;vertical-align:middle;font-size:12px;font-weight:600}
+.icon-button svg,.theme-icon svg{display:block;width:20px;height:20px;transform:translateY(-1px)}
+.icon-button span{line-height:1;vertical-align:middle}
+.theme-segmented{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.theme-segmented button{background:transparent;border:0;padding:6px 10px;color:var(--muted)}
+.theme-segmented button[aria-pressed="true"]{background:var(--bg-soft);color:var(--fg)}
+.site-main{padding-bottom:60px}
+.site-footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted)}
+.hero{position:relative;padding:72px 0 24px;background:linear-gradient(180deg,rgba(99,102,241,.08),rgba(99,102,241,0));overflow:hidden}
+.hero .title{font-size:40px;margin:0 0 8px}
+.hero .subtitle{margin:0 0 4px;color:var(--muted)}
+.hero .location{margin:0;color:var(--muted)}
+.hero-actions{display:flex;gap:12px;margin-top:16px}
+.hero-tagline{margin-top:14px;color:var(--fg);opacity:.9;max-width:720px}
+.gradient-text{background:linear-gradient(90deg,#6366f1,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-block;border:1px solid var(--border);padding:10px 14px;border-radius:8px;color:var(--fg);text-decoration:none;background:transparent;transition:transform .15s ease,box-shadow .2s ease,background-color .2s ease}
+.btn.primary{background:var(--accent);border-color:transparent;color:#fff}
+.btn.small{padding:6px 10px;font-size:14px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+
+.section{padding:36px 0}
+h2{font-size:22px;margin:0 0 12px}
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--border)}
+.timeline li{position:relative;padding:8px 0 8px 16px}
+.timeline li:before{content:"";position:absolute;left:-6px;top:16px;width:10px;height:10px;border-radius:999px;background:var(--accent)}
+.timeline .time{color:var(--muted);font-size:14px}
+.skills{list-style:none;margin:0;padding:0}
+.skills li{display:flex;align-items:center;gap:12px;margin:10px 0}
+.skills .bar{flex:1;height:6px;background:#e2e8f0;border-radius:999px;border:1px solid var(--border);overflow:hidden}
+.skills .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#06b6d4)}
+/* Align skill labels and progress bars */
+.skills li > span:first-child{flex:0 0 120px;display:block}
+.two-col{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:800px){.two-col{grid-template-columns:1fr 1fr}}
+.cards{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+@media(min-width:800px){.cards{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;transition:transform .15s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.card .time{color:var(--muted);font-size:14px;margin-top:8px}
+.card-cover{display:block;width:100%;height:auto;border-radius:8px;margin:0 0 10px}
+.pubs{padding-left:18px}
+.contact{list-style:none;margin:0;padding:0}
+.contact li{margin:6px 0}
+.hero-grid{display:grid;grid-template-columns:128px 1fr;gap:18px;align-items:center}
+.hero-avatar{width:128px;height:128px;border-radius:999px;background:linear-gradient(45deg,#a78bfa,#60a5fa)}
+.hero-bg{position:absolute;inset:-20% -20% auto -20%;height:240px;background:radial-gradient(800px 120px at 50% -20%,rgba(99,102,241,.18),transparent 60%)}
+.hero-mask{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:auto;fill:var(--bg)}
+
+/* Dark mode palette when forced */
+[data-theme="dark"]{--bg:#0f172a;--bg-soft:#111827;--fg:#e5e7eb;--muted:#9ca3af;--accent:#bf165e;--card:#0b1022;--border:#1f2937}
+
+/* Force light palette regardless of system preference when Light mode is selected */
+[data-theme="light"]{--bg:#ffffff;--bg-soft:#f8fafc;--fg:#0f172a;--muted:#475569;--accent:#bf165e;--card:#ffffff;--border:#e5e7eb}
+
+/* Horizontal carousel */
+.carousel{position:relative}
+.carousel-track{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(260px,80vw,360px);grid-template-columns:none;overflow-x:auto;overflow-y:hidden;gap:12px;padding:2px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;align-items:start}
+.carousel-track::-webkit-scrollbar{height:0}
+.carousel-track .card{scroll-snap-align:start;min-width:260px}
+.carousel-arrow{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Bottom controls */
+.carousel-controls{display:flex;justify-content:center;gap:12px;margin-top:10px}
+.carousel-control{border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:999px;width:36px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+.carousel-control:hover{transform:translateY(-1px)}
+
+/* Desktop defaults for hamburger/mobile menu */
+.menu-toggle{display:none}
+.mobile-menu{display:block}
+.mobile-menu[hidden]{display:none}
+
+/* Mobile tuning */
+@media(max-width: 799px){
+  /* Wider side padding for main content */
+  .container{padding-left:28px;padding-right:28px}
+  /* Only affect normal card grids, not carousels */
+  .cards:not(.carousel-track){grid-template-columns:1fr}
+  /* Carousel card width relative to its own track padding */
+  .carousel .carousel-track.cards{grid-template-columns:none}
+  .carousel-track{grid-auto-columns:calc(100% - 56px);gap:12px;padding-left:28px;padding-right:28px;scroll-padding-left:28px;scroll-padding-right:28px}
+  .carousel-track .card{min-width:calc(100% - 56px);box-sizing:border-box;margin:0}
+  /* Header: show hamburger, hide desktop nav to save space */
+  .menu-toggle{display:inline-flex}
+  .site-nav{display:none}
+  /* Mobile menu panel */
+  .mobile-menu{position:sticky;top:56px;z-index:19;border-bottom:1px solid var(--border);background:var(--card)}
+  .mobile-nav ul{list-style:none;margin:0;padding:8px 20px;display:flex;flex-direction:column;gap:4px}
+  .mobile-nav a{display:flex;height:auto;line-height:1.6;padding:10px 0;color:var(--fg);text-decoration:none}
+  .mobile-nav .nav-current a{font-weight:600}
+  /* Hero: stack avatar above name */
+  .hero-grid{grid-template-columns:1fr}
+  .hero-avatar{width:110px;height:110px}
+  .hero .title{font-size:32px;margin-top:8px}
+  /* Narrow screens: shrink label width for skills */
+  .skills li > span:first-child{flex:0 0 160px}
+}
+
+/* Ghost portal/editor required widths for media cards */
+.kg-width-wide{max-width:min(1100px,100%);margin-left:auto;margin-right:auto}
+.kg-width-full{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
+

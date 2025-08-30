@@ -1,0 +1,114 @@
+{
+  "name": "cv-portfolio",
+  "version": "0.1.0",
+  "description": "A CV style Ghost theme with a static homepage inspired by Shuo Meng's site.",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "author": {
+    "name": "Your Name",
+    "email": "shuomeng2-c@my.cityu.edu.hk"
+  },
+  "config": {
+    "posts_per_page": 5,
+    "custom": {
+      "hero_name": {
+        "type": "text",
+        "label": "Hero: Name",
+        "default": "Shuo Meng"
+      },
+      "hero_subtitle": {
+        "type": "text",
+        "label": "Hero: Subtitle",
+        "default": "LLM Engineer / Applied Scientist"
+      },
+      "hero_location": {
+        "type": "text",
+        "label": "Hero: Location",
+        "default": "Shenzhen / Remote"
+      },
+      "hero_tagline": {
+        "type": "text",
+        "label": "Hero: Tagline",
+        "default": "End-to-end LLM engineering: data → training → alignment → eval → inference."
+      },
+      "hero_tagline2": {
+        "type": "text",
+        "label": "Hero: Tagline2",
+        "default": "Open to full-time roles."
+      },
+      "hero_avatar": {
+        "type": "image",
+        "label": "Hero: Avatar (image URL)"
+      },
+      "hero_name_zh": {
+        "type": "text",
+        "label": "Hero(ZH): Name"
+      },
+      "hero_subtitle_zh": {
+        "type": "text",
+        "label": "Hero(ZH): Subtitle"
+      },
+      "hero_location_zh": {
+        "type": "text",
+        "label": "Hero(ZH): Location"
+      },
+      "hero_tagline_zh": {
+        "type": "text",
+        "label": "Hero(ZH): Tagline"
+      },
+      "hero_tagline2_zh": {
+        "type": "text",
+        "label": "Hero(ZH): Tagline2"
+      },
+      "hero_avatar_zh": {
+        "type": "image",
+        "label": "Hero(ZH): Avatar (image URL)"
+      },
+      "contact_email": {
+        "type": "text",
+        "label": "Contact: Email",
+        "default": "you@example.com"
+      },
+      "contact_wechat": {
+        "type": "text",
+        "label": "Contact: WeChat"
+      },
+      "contact_whatsapp": {
+        "type": "text",
+        "label": "Contact: WhatsApp"
+      },
+      "contact_address": {
+        "type": "text",
+        "label": "Contact: Address",
+        "default": "Shenzhen / Remote"
+      },
+      "contact_github": {
+        "type": "text",
+        "label": "Contact: GitHub",
+        "default": "https://github.com/yourname"
+      },
+      "contact_scholar": {
+        "type": "text",
+        "label": "Contact: Google Scholar",
+        "default": "https://scholar.google.com/citations?user=XXXX"
+      }
+    }
+  },
+  "keywords": [
+    "ghost-theme",
+    "cv",
+    "portfolio"
+  ],
+  "license": "MIT",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-terser": "^2.1.0"
+  }
+}

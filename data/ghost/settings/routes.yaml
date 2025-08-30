@@ -1,0 +1,21 @@
+routes:
+  /: home
+  /zh/: home-zh
+  /about/:
+    template: page
+    data: page.about
+  /zh/about/:
+    template: page
+    data: page.about-zh
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    filter: 'tag:-hash-lang-zh'
+  /zh/blog/:
+    permalink: /zh/blog/{slug}/
+    filter: 'tag:hash-lang-zh'
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

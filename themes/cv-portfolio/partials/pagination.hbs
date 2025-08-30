@@ -1,0 +1,12 @@
+{{#if pagination}}
+<nav class="pagination container section" role="navigation">
+  {{#if prev}}
+    <a class="btn" href="{{page_url prev}}">上一页</a>
+  {{/if}}
+  <span class="muted">第 {{page}} / {{pages}} 页</span>
+  {{#if next}}
+    <a class="btn" href="{{page_url next}}">下一页</a>
+  {{/if}}
+</nav>
+{{/if}}
+

@@ -1,0 +1,24 @@
+{{!< default}}
+
+<section class="section container">
+  <h1>Blogs</h1>
+  <div class="cards">
+    {{#foreach posts}}
+      <article class="card">
+        {{#if feature_image}}
+          <a href="{{url absolute="true"}}"><img class="card-cover" src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy" /></a>
+        {{/if}}
+        <h3><a href="{{url absolute="true"}}">{{title}}</a></h3>
+        <p class="time">{{date published_at format="YYYY-MM-DD"}} · {{reading_time minute="1 min read" minutes="% min read"}}</p>
+        {{#if excerpt}}
+          <p>{{excerpt}}</p>
+        {{/if}}
+        <p><a class="btn small" href="{{url absolute="true"}}">Read more</a></p>
+      </article>
+    {{/foreach}}
+  </div>
+
+  {{pagination}}
+</section>
+
+
