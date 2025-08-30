@@ -3,6 +3,7 @@
 
 # 环境变量
 .env
+.env.prod
 .env.local
 .env.*.local
 
@@ -32,5 +33,8 @@ yarn-error.log*
 # 其他常见忽略
 *.swp
 *.swo
+*.zip
 
+ssl
+another_service
 CV.png

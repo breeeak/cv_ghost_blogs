@@ -125,21 +125,39 @@
     // Start auto-scroll immediately
     autoScroll();
 
-    // Wheel: avoid double-scrolling jitter on trackpads
+    // Wheel: on desktops, allow page vertical scroll by default.
+    // Only map to horizontal when Shift is held or clear horizontal intent is detected.
     el.addEventListener('wheel', (e) => {
       const absX = Math.abs(e.deltaX);
       const absY = Math.abs(e.deltaY);
       const now = performance.now();
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const atStart = el.scrollLeft <= 0;
+      const atEnd = el.scrollLeft >= maxScroll - 1;
+      const shiftHeld = e.shiftKey === true;
+
       // If horizontal intent is stronger, let native scrolling handle it
       if (absX > absY + 2) {
         userPauseUntil = now + 1500;
         return; // no manual scroll, no preventDefault
       }
-      // If vertical intent is stronger, translate to horizontal and prevent default to avoid jitter
-      if (absY > absX + 2) {
-        el.scrollLeft += e.deltaY;
-        userPauseUntil = now + 1500;
-        e.preventDefault();
+      // If vertical intent is stronger, only translate to horizontal when Shift is held
+      // or when there is a noticeable horizontal component (trackpads), otherwise let page scroll.
+      if (absY > absX + 2 && (shiftHeld || absX > 0.5)) {
+        const intendsRight = e.deltaY > 0;
+        const intendsLeft = e.deltaY < 0;
+        const canScrollRight = !atEnd && intendsRight;
+        const canScrollLeft = !atStart && intendsLeft;
+
+        if (canScrollLeft || canScrollRight) {
+          el.scrollLeft += e.deltaY;
+          userPauseUntil = now + 1500;
+          e.preventDefault();
+        } else {
+          // At the edge for this intent; do not block page vertical scroll
+          userPauseUntil = now + 1200;
+          // no preventDefault
+        }
       }
       // Otherwise (tiny deltas), do nothing
     }, { passive: false });

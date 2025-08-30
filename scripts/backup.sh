@@ -7,7 +7,14 @@ BACKUP_DIR="backups/${TIMESTAMP}"
 mkdir -p "${BACKUP_DIR}"
 
 # Database dump (use env from running db container)
-docker compose exec -T db sh -lc 'mysqldump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' > "${BACKUP_DIR}/db.sql"
+# 使用更安全的参数，避免需要 PROCESS/TABLESPACES 等额外权限
+docker compose exec -T db sh -lc 'mysqldump \
+  --single-transaction \
+  --quick \
+  --skip-lock-tables \
+  --no-tablespaces \
+  --column-statistics=0 \
+  -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' > "${BACKUP_DIR}/db.sql"
 
 # Content archive (images, themes, routes.yaml, etc.)
 tar -czf "${BACKUP_DIR}/content.tar.gz" -C data/ghost .

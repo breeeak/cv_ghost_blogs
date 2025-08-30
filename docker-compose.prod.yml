@@ -4,7 +4,7 @@ services:
     environment:
       url: ${GHOST_URL}
       mail__transport: SMTP
-      mail__from: "Ghost <no-reply@your-domain.com>"
+      mail__from: ${SMTP_FROM}
       mail__options__host: ${SMTP_HOST}
       mail__options__port: ${SMTP_PORT}
       mail__options__secure: ${SMTP_SECURE:-"false"}
@@ -12,7 +12,16 @@ services:
       mail__options__auth__pass: ${SMTP_PASS}
     # 生产建议由 Nginx 等反代接入，不暴露容器端口
     ports: []
+    networks:
+      default: {}
+      reverse_proxy:
+        aliases:
+          - ghost
 
   mailpit:
     profiles: ["dev"]
     ports: []
+
+networks:
+  reverse_proxy:
+    external: true

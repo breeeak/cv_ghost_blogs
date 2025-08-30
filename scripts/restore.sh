@@ -8,12 +8,35 @@ if [[ -z "$BACKUP_DIR" || ! -d "$BACKUP_DIR" ]]; then
 fi
 
 # 停止 Ghost 以避免写入冲突
-docker compose stop ghost
+docker compose stop ghost || true
+
+# 确保数据库服务启动
+docker compose up -d db
+
+# 等待数据库就绪（最长 60 秒）
+echo "等待数据库就绪..."
+for i in {1..60}; do
+  if docker compose exec -T db sh -lc 'mysqladmin ping -h 127.0.0.1 --silent' >/dev/null 2>&1; then
+    echo "数据库已就绪。"
+    break
+  fi
+  sleep 1
+  if [[ $i -eq 60 ]]; then
+    echo "数据库未就绪，放弃恢复。" >&2
+    exit 1
+  fi
+done
 
 # 恢复数据库
 if [[ -f "$BACKUP_DIR/db.sql" ]]; then
   echo "Restoring DB from $BACKUP_DIR/db.sql"
-  docker compose exec -T db sh -lc 'mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' < "$BACKUP_DIR/db.sql"
+  # 若有 root 密码，优先使用 root，并确保数据库存在
+  if docker compose exec -T db sh -lc '[ -n "$MYSQL_ROOT_PASSWORD" ]'; then
+    docker compose exec -T db sh -lc 'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\`"'
+    docker compose exec -T db sh -lc 'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE"' < "$BACKUP_DIR/db.sql"
+  else
+    docker compose exec -T db sh -lc 'mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' < "$BACKUP_DIR/db.sql"
+  fi
 else
   echo "警告: 未找到 $BACKUP_DIR/db.sql，跳过数据库恢复"
 fi
